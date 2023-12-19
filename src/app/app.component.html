@@ -11,7 +11,7 @@
 <body>
 <div class="ship-container">
   <div class="ship-image-container">
-    <img [src]="'../assets/png/player.png'" alt="player ship">
+    <img [src]="'assets/png/player.png'" alt="player ship">
   </div>
   <div class="bars">
     <bar [barConfiguration]="playerData.healthBar" [currentValue]="playerData.health" [ngClass]="playerData.healthBar.type"></bar>
@@ -39,7 +39,7 @@
 
   <div class="dices-row">
     <ng-container *ngIf="combatState.phase === 'player'">
-      <img *ngFor="let dice of dices" [ngClass]="{locked: dice.locked}" [src]="'../assets/svg/'+ dice.symbol +'.svg'" [alt]="dice.symbol" (click)="toggleDice(dice, dice.locked)">
+      <img *ngFor="let dice of dices" [ngClass]="{locked: dice.locked}" [src]="'assets/svg/'+ dice.symbol +'.svg'" [alt]="dice.symbol" (click)="toggleDice(dice, dice.locked)">
     </ng-container>
     <ng-container *ngIf="combatState.phase === 'enemy'">
       <h1>Enemy Turn</h1>
@@ -64,7 +64,7 @@
     <bar [barConfiguration]="enemyData.specialBar" [currentValue]="enemyData.special" [ngClass]="enemyData.specialBar.type"></bar>
   </div>
   <div class="ship-image-container">
-    <img [src]="'../assets/png/enemy.png'" alt="enemy ship">
+    <img [src]="'assets/png/enemy.png'" alt="enemy ship">
   </div>
 </div>
 </body>
