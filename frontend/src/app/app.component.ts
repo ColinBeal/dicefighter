@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { DiceEffectService } from './services/dice-effect.service';
 import { DiceEffect, DiceFaceNames, DiceInterface } from './interfaces/dice.interface';
 import { EffectsLabel } from './constants/dice.constant';
-import { BarInterface } from './interfaces/bar.interface';
 import { ShipDataInterface } from './interfaces/ship.interface';
 import { CombatStateInterface } from './interfaces/combat.interface';
 import { BarComponent } from './features/bar/bar.component';
@@ -50,8 +49,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.initDices()
-    this.playerData = this.generateData(15, 15, 10, 15, 15, 0);
-    this.enemyData = this.generateData(20, 10, 10, 20, 10);
+    this.playerData = this.generateData(10, 10, 10, 10, 10, 0);
+    this.enemyData = this.generateData(10, 10, 10, 10, 10);
   }
 
   initDices() {
@@ -132,7 +131,7 @@ export class AppComponent implements OnInit {
       symbol[index] = this.diceThrow();
       intervals[index] = window.setInterval(() => {
         this.turnDiceFaces(unlockedDices[index])
-      }, 50);
+      }, 100);
     }
     setTimeout(() => {
       for (let index = 0; index < unlockedDices.length; index++) {

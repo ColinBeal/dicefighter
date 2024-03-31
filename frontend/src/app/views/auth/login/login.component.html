@@ -1,0 +1,15 @@
+<h2>Log In</h2>
+<form (ngSubmit)="login()" [formGroup]="logInForm">
+    <div class="form-input">
+        <label for="username">Username</label>
+        <input type="username" id="username" formControlName="username" required>
+    </div>
+    <div class="form-input">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" required>
+    </div>
+    <div class="submit-button">
+        <button type="submit">Log In</button>
+    </div> 
+</form>
+<a (click)="router.navigate(['/auth/signin'])">I don't have an account</a>

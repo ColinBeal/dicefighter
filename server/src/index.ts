@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import salaryRoutes from './routes/salary.routes';
+import userRoutes from './routes/user.routes';
 
 const app = express();
 const port = 3000;
@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Use salary routes
-app.use(salaryRoutes);
+app.use(userRoutes);
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://colinb:ry4oYXRH3sBIRdvL@cluster0.10ung.mongodb.net/<dbname>?retryWrites=true&w=majority').then(() => {
