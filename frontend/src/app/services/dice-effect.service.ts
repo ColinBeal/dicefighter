@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DiceEffect, DiceFaceNames, DiceInterface, EffectIds, EvadeEffectsIDs, MoneyEffectsIDs, MultiplierEffectsIDs, ShieldEffectsIDs, WeaponEffectsIDs, XEffectsIDs } from '../interfaces/dice.interface';
+import { DiceEffect, DiceFaceNames, DiceInterface, EffectIds, EvadeEffectsIDs, MoneyEffectsIDs, SpecialEffectsIDs, ShieldEffectsIDs, WeaponEffectsIDs, XEffectsIDs } from '../interfaces/dice.interface';
 import { ShipDataInterface } from '../interfaces/ship.interface';
 import { CombatStateInterface } from '../interfaces/combat.interface';
 

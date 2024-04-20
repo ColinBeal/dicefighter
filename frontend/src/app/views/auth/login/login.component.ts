@@ -3,6 +3,7 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../api-auth.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterOutlet } from '@angular/router';
+import { UserService } from '../../../services/user.service';
 
 @Component({
     selector: 'app-root',
@@ -17,7 +18,10 @@ import { Router, RouterOutlet } from '@angular/router';
         public password: string;
         public logInForm: FormGroup;
     
-        constructor(private apiAuthService: AuthService, public router: Router) {
+        constructor(
+            public router: Router, 
+            private apiAuthService: AuthService,
+            private userService: UserService) {
     
         }
     
@@ -31,7 +35,10 @@ import { Router, RouterOutlet } from '@angular/router';
         login() {
             const { username, password } = this.logInForm.value;
             this.apiAuthService.login(username, password).subscribe({
-                next: (v) => console.log(v),
+                next: (v) => {
+                    this.userService.setUser(v.data)
+                    this.router.navigate(['./ship-selection']);
+                },
                 error: (error) => console.error(error),
                 complete: () => console.info('complete')
             });

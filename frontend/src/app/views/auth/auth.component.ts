@@ -10,8 +10,8 @@ import { RouterOutlet } from '@angular/router';
     imports: [CommonModule, RouterOutlet]
   })
 
-    export class AuthComponent {
-        constructor() {
-    
-        }
+export class AuthComponent {
+    constructor() {
+
     }
+}

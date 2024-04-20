@@ -1,15 +1,15 @@
-import { DiceFaceNames, EvadeEffectsIDs, MoneyEffectsIDs, MultiplierEffectsIDs, ShieldEffectsIDs, WeaponEffectsIDs, XEffectsIDs } from "../interfaces/dice.interface";
+import { DiceFaceNames, EvadeEffectsIDs, MoneyEffectsIDs, SpecialEffectsIDs, ShieldEffectsIDs, WeaponEffectsIDs, XEffectsIDs } from "../interfaces/dice.interface";
 
 export const EvadeEffectsLabels: {[key in EvadeEffectsIDs]: string} = {
   'EVD1': 'Need 2 Evade faces',
   'EVD2': 'Evade +10%',
-  'EVD3': 'Evade +25%',
-  'EVD4': 'Evade +40%',
-  'EVD5': 'Evade +55%',
-  'EVD6': 'Evade +65% for 2 turns',
-  'EVD7': 'Evade +75% for 2 turns, full accurate shots',
-  'EVD8': 'Evade +80% for 2 turns, full accurate shots, escape window',
-  'EVD9': 'Evade 100% for 3 turns, full accurate shots, escape window',
+  'EVD3': 'Evade +10%, Accuracy +10%',
+  'EVD4': 'Evade +20%, Accuracy +10%',
+  'EVD5': 'Evade +20%, Accuracy +20%',
+  'EVD6': 'Evade +30%, Accuracy +20%',
+  'EVD7': 'Evade +30%, Accuracy +30%',
+  'EVD8': 'Evade +40%, Accuracy +30%',
+  'EVD9': 'Evade +40%, Accuracy +40%',
 }
 
 export const MoneyEffectsLabels: {[key in MoneyEffectsIDs]: string} = {
@@ -24,16 +24,16 @@ export const MoneyEffectsLabels: {[key in MoneyEffectsIDs]: string} = {
   'MON9': 'Money +500%',
 }
 
-export const MultiplierEffectsLabels: {[key in MultiplierEffectsIDs]: string} = {
-  'MUL1': 'Need 2 Multiplier faces',
-  'MUL2': 'Multiplier x1.25',
-  'MUL3': 'Multiplier x1.5',
-  'MUL4': 'Multiplier x2',
-  'MUL5': 'Multiplier x3',
-  'MUL6': 'Multiplier x4',
-  'MUL7': 'Multiplier x6',
-  'MUL8': 'Multiplier x8',
-  'MUL9': 'Multiplier x10',
+export const SpecialEffectsLabels: {[key in SpecialEffectsIDs]: string} = {
+  'SPC1': 'Need 2 Multiplier faces',
+  'SPC2': 'Multiplier x1.25',
+  'SPC3': 'Multiplier x1.5',
+  'SPC4': 'Multiplier x2',
+  'SPC5': 'Multiplier x3',
+  'SPC6': 'Multiplier x4',
+  'SPC7': 'Multiplier x6',
+  'SPC8': 'Multiplier x8',
+  'SPC9': 'Multiplier x10',
 }
 
 export const WeaponEffectsLabels: {[key in WeaponEffectsIDs]: string} = {
@@ -63,7 +63,7 @@ export const ShieldEffectsLabels: {[key in ShieldEffectsIDs]: string} = {
 export const XEffectsLabels: {[key in XEffectsIDs]: string} = {
   'X1': 'Warning !',
   'X2': 'Warning !!!',
-  'X3': 'DANGER !',
+  'X3': '! DANGER !',
   'X4': 'Instantly skips turn',
   'X5': 'Instantly skips turn',
   'X6': 'Instantly skips turn, +50% damage taken',
@@ -78,5 +78,5 @@ export const EffectsLabel: {[key in DiceFaceNames]: {[key: string]: string}} = {
   'X':   XEffectsLabels,
   'WEA': WeaponEffectsLabels,
   'SHD': ShieldEffectsLabels,
-  'SPC': MultiplierEffectsLabels
+  'SPC': SpecialEffectsLabels
 }

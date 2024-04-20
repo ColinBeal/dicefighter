@@ -1,0 +1,18 @@
+<div class="ship-container" *ngFor="let baseShip of baseShips">
+    <div class="ship-image-container">
+        <img [src]="baseShip.imagePath" alt="ship preview">
+    </div>
+    <div class="ship-name">
+        {{baseShip.name}}
+    </div>
+    <div class="ship-description">
+        {{baseShip.description}}
+    </div>
+    <div class="ship-class">
+        {{baseShip.shipClass.name}}
+    </div>
+    <div class="ship-class-description">
+        {{baseShip.shipClass.description}}
+    </div>
+    <a class="button" (click)="selectShip(baseShip)">Select</a>
+</div>
