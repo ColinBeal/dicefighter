@@ -1,0 +1,282 @@
+<div class="third-container">
+    <div class="first-container">
+        <div class="full header">
+            <div class="name">{{player.name}}</div>
+            <div class="level">Lv.{{player.level}} <span *ngIf="player.statPoints"> ({{player.statPoints}})</span></div>
+        </div>
+        <div class="stats-container">
+            <div class="stat-column">
+                <div class="stat">
+                    <div class="value-container">
+                        <div class="stat-name">HP</div>
+                        <div class="stat-value">{{player.baseStats.hp}}</div>
+                    </div>   
+                </div>  
+                <div class="stat">
+                    <div class="value-container">
+                        <div class="stat-name">CON</div>
+                        <div class="stat-value">{{player.baseStats.constitution}}</div>
+                    </div>    
+                    <div class="upgrade button" (click)="upgradeStat('constitution')" *ngIf="player.statPoints !== 0">
+                        +
+                    </div>
+                </div> 
+                <div class="stat">
+                    <div class="value-container">
+                        <div class="stat-name">STR</div>
+                        <div class="stat-value">{{player.baseStats.strength}}</div>
+                    </div>
+                    <div class="upgrade button" (click)="upgradeStat('strength')" *ngIf="player.statPoints !== 0">
+                        +
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="value-container">
+                        <div class="stat-name">DEX</div>
+                        <div class="stat-value">{{player.baseStats.dexterity}}</div>
+                    </div>    
+                    <div class="upgrade button" (click)="upgradeStat('dexterity')" *ngIf="player.statPoints !== 0">
+                        +
+                    </div>  
+                </div> 
+            </div>
+            <div class="stat-column">
+                <div class="stat">
+                    <div class="value-container">
+                        <div class="stat-name">MP</div>
+                        <div class="stat-value">{{player.baseStats.mp}}</div>
+                    </div>   
+                </div>  
+                <div class="stat">
+                    <div class="value-container">
+                        <div class="stat-name">AGI</div>
+                        <div class="stat-value">{{player.baseStats.agility}}</div>
+                    </div>    
+                    <div class="upgrade button" (click)="upgradeStat('agility')" *ngIf="player.statPoints !== 0">
+                        +
+                    </div>
+                </div> 
+                <div class="stat">
+                    <div class="value-container">
+                        <div class="stat-name">INT</div>
+                        <div class="stat-value">{{player.baseStats.intelligence}}</div>
+                    </div>
+                    <div class="upgrade button" (click)="upgradeStat('intelligence')" *ngIf="player.statPoints !== 0">
+                        +
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="value-container">
+                        <div class="stat-name">WIS</div>
+                        <div class="stat-value">{{player.baseStats.wisdom}}</div>
+                    </div>    
+                    <div class="upgrade button" (click)="upgradeStat('wisdom')" *ngIf="player.statPoints !== 0">
+                        +
+                    </div>  
+                </div> 
+            </div>
+        </div>
+    </div>    
+    <div class="rest-container">
+        <div class="header">
+            <div class="name">Offensive stats</div>
+        </div>
+        <div class="stats-container">
+            <div class="stat-column">
+                <div class="secondary stat">
+                    <div class="value-container">
+                        <div class="stat-name">Attack dmg:</div>
+                        <div class="stat-value">{{player.baseStats.attackDamage}}</div>
+                    </div>
+                </div>
+                <div class="secondary stat">   
+                    <div class="value-container">
+                        <div class="stat-name">Attack speed:</div>
+                        <div class="stat-value">{{player.baseStats.attackSpeed | number : '1.0-2'}}</div>
+                    </div>
+                </div>
+                <div class="secondary stat">     
+                    <div class="value-container">
+                        <div class="stat-name">Critical chance:</div>
+                        <div class="stat-value">{{player.baseStats.criticalChance | number : '1.0-2'}}</div>
+                    </div> 
+                </div>
+                <div class="secondary stat">        
+                    <div class="value-container">
+                        <div class="stat-name">Accuracy:</div>
+                        <div class="stat-value">{{player.baseStats.accuracy | number : '1.0-2'}}</div>
+                    </div>   
+                </div> 
+            </div>
+            <div class="stat-column">
+                <div class="secondary stat">
+                    <div class="value-container">
+                        <div class="stat-name">Fire dmg:</div>
+                        <div class="stat-value">{{player.baseStats.fireDamage}}</div>
+                    </div>
+                </div>
+                <div class="secondary stat">    
+                    <div class="value-container">
+                        <div class="stat-name">Cold dmg:</div>
+                        <div class="stat-value">{{player.baseStats.coldDamage}}</div>
+                    </div>
+                </div>
+                <div class="secondary stat">
+                    <div class="value-container">
+                        <div class="stat-name">Poison dmg:</div>
+                        <div class="stat-value">{{player.baseStats.poisonDamage}}</div>
+                    </div>
+                </div>    
+                <div class="secondary stat">   
+                    <div class="value-container">
+                        <div class="stat-name">Electric dmg:</div>
+                        <div class="stat-value">{{player.baseStats.electricDamage}}</div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="header">
+            <div class="name">Defensive stats</div>
+        </div>
+        <div class="stats-container">
+            <div class="stat-column">
+                <div class="secondary stat">
+                    <div class="value-container">
+                        <div class="stat-name">HP regen:</div>
+                        <div class="stat-value">{{player.baseStats.hpRegen | number : '1.0-2'}}</div>
+                    </div>
+                </div>
+                <div class="secondary stat">
+                    <div class="value-container">
+                        <div class="stat-name">Armor:</div>
+                        <div class="stat-value">{{player.baseStats.armor}}</div>
+                    </div>
+                </div>   
+                <div class="secondary stat">    
+                    <div class="value-container">
+                        <div class="stat-name">Dodge:</div>
+                        <div class="stat-value">{{player.baseStats.dodge | number : '1.0-2'}}</div>
+                    </div>
+                </div>
+                <div class="secondary stat">    
+                    <div class="value-container">
+                        <div class="stat-name">Block:</div>
+                        <div class="stat-value">{{player.baseStats.block | number : '1.0-2'}}</div>
+                    </div>   
+                </div> 
+            </div>
+            <div class="stat-column">
+                <div class="secondary stat">
+                    <div class="value-container">
+                        <div class="stat-name">Fire res:</div>
+                        <div class="stat-value">{{player.baseStats.fireResistance}}</div>
+                    </div>
+                </div>
+                <div class="secondary stat">    
+                    <div class="value-container">
+                        <div class="stat-name">Cold res:</div>
+                        <div class="stat-value">{{player.baseStats.coldResistance}}</div>
+                    </div>
+                </div>
+                <div class="secondary stat">    
+                    <div class="value-container">
+                        <div class="stat-name">Poison res:</div>
+                        <div class="stat-value">{{player.baseStats.poisonResistance}}</div>
+                    </div>
+                </div>
+                <div class="secondary stat">    
+                    <div class="value-container">
+                        <div class="stat-name">Electric res:</div>
+                        <div class="stat-value">{{player.baseStats.electricResistance}}</div>
+                    </div>   
+                </div> 
+            </div>
+        </div>    
+    </div>
+</div>    
+<div class="third-container">
+    <div class="header">
+        <div class="name">Weapon</div>
+    </div>
+    <div class="equipments-container">
+        <div class="equipment">
+            <div class="equipment-name">Weapon:</div>
+            <div class="equipment-value">[ {{player.equipment.mainHand.name}} ]</div>
+        </div>
+        <div class="equipment">
+            <div class="equipment-name">Off hand:</div>
+            <div class="equipment-value">[
+                <span *ngIf="player.equipment.offHand">{{player.equipment.offHand.name}}</span>
+            ]</div>
+        </div>   
+    </div>         
+    <div class="header">
+        <div class="name">Armor</div>
+    </div>
+    <div class="equipments-container">
+        <div class="equipment">
+            <div class="equipment-name">Helmet:</div>
+            <div class="equipment-value">
+                [ <span *ngIf="player.equipment.helmet">{{player.equipment.helmet.name}}</span> ]
+            </div>
+        </div>
+        <div class="equipment">
+            <div class="equipment-name">Chest:</div>
+            <div class="equipment-value">
+                [ <span *ngIf="player.equipment.chest">{{player.equipment.chest.name}}</span> ]
+            </div>
+        </div>   
+        <div class="equipment">
+            <div class="equipment-name">Legs:</div>
+            <div class="equipment-value">
+                [ <span *ngIf="player.equipment.legs">{{player.equipment.legs.name}}</span> ]
+            </div>
+        </div>
+        <div class="equipment">
+            <div class="equipment-name">Gloves:</div>
+            <div class="equipment-value">
+                [ <span *ngIf="player.equipment.gloves">{{player.equipment.gloves.name}}</span> ]
+            </div>
+        </div>
+        <div class="equipment">
+            <div class="equipment-name">Boots:</div>
+            <div class="equipment-value">
+                [ <span *ngIf="player.equipment.boots">{{player.equipment.boots.name}}</span> ]
+            </div>
+        </div>
+        <div class="equipment">
+            <div class="equipment-name">Necklace:</div>
+            <div class="equipment-value">
+                [ <span *ngIf="player.equipment.necklace">{{player.equipment.necklace.name}}</span> ]
+            </div>
+        </div>
+        <div class="equipment">
+            <div class="equipment-name">Ring1:</div>
+            <div class="equipment-value">
+                [ <span *ngIf="player.equipment.ring1">{{player.equipment.ring1.name}}</span> ]
+            </div>
+        </div>
+        <div class="equipment">
+            <div class="equipment-name">Ring2:</div>
+            <div class="equipment-value">
+                [ <span *ngIf="player.equipment.ring2">{{player.equipment.ring2.name}}</span> ]
+            </div>
+        </div>
+    </div>       
+</div>
+<div class="third-container">
+    <div class="header">
+        <div class="name">Inventory</div>
+        <div class="inventory-count">10/25</div>
+    </div>
+    <div class="inventory-container">
+        <div class="inventory-item">
+            <div class="name">Pine wood</div>
+            <div class="value">10</div>
+        </div>
+        <div class="inventory-item">
+            <div class="name unique">Valiant heart sword</div>
+            <div class="value">lv.5</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="dungeon-container" *ngIf="dungeon">
+    <div class="header">
+        <div class="name">Dungeon map</div>
+    </div>
+    <div class="map-container">
+        <div class="row" *ngFor="let row of dungeon">
+            <div class="room" *ngFor="let room of row">
+                <span *ngIf="room === 'x'"></span>
+                <span *ngIf="room !== 'x'">[<span *ngIf="room === 'o'">&nbsp;&nbsp;</span> <span *ngIf="room !== 'o'">{{room}}</span>]</span>
+            </div>
+        </div>
+    </div>
+</div>

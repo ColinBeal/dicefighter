@@ -34,6 +34,7 @@ export async function createUser(req: Request, res: Response) {
 interface CustomSession extends Session {
   viewCount?: number;
   userId?: string;
+  playerId?: string;
 }
 
 export async function logUser(req: Request, res: Response) {

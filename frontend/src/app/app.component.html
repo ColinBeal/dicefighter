@@ -1,13 +1,15 @@
-<nav>
-  <ul>
-    <li class="logo">
-      DiceFighter <span class="version">v0.1</span>
-    </li>
-    <li>
-        Menu <span *ngIf="user">{{user.name}}</span>
-    </li>
-  </ul>
-</nav>
-<body>
-  <router-outlet></router-outlet>
-</body>
+<div class="crt">
+  <nav>
+    <ul>
+      <li class="logo">
+        Lootrpg <span class="version">v0.1</span>
+      </li>
+      <li>
+          Menu <span *ngIf="user">{{user.name}}</span>
+      </li>
+    </ul>
+  </nav>
+  <body>
+    <router-outlet></router-outlet>
+  </body>
+</div>

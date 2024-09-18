@@ -1,18 +1,37 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import bodyParser from 'body-parser';
+import axios from 'axios';
+import multer from 'multer';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import cors from 'cors';
 import userRoutes from './routes/user.routes';
-import baseShipRoutes from './routes/base-ship.routes';
-import shipRoutes from './routes/ship.routes';
-import { Item } from './models/item.model';
-import { BaseEngine } from './models/base-engine.model';
+import playerRoutes from './routes/player.routes';
+import dungeonRoutes from './routes/dungeon.routes';
+import chatRoutes from './routes/chat.routes';
 
+const upload = multer({ dest: 'uploads/' });
 const app = express();
 const port = 3000;
+app.use(bodyParser.json());
 
+app.post('/api/chat', async (req, res) => {
+  const { question } = req.body;
+  try {
+    const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+      prompt: question,
+      max_tokens: 150
+    }, {
+      headers: {
+        'Authorization': `Bearer YOUR_API_KEY`
+      }
+    });
+    res.json({ answer: response.data.choices[0].text.trim() });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 // Set up CORS
 app.use(cors({
   origin: 'http://localhost:4200', // replace with your frontend url
@@ -25,7 +44,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: false, sameSite: 'none' }, // Set secure to true if you're using HTTPS
   store: MongoStore.create({ 
-    mongoUrl: 'mongodb+srv://colinb:ry4oYXRH3sBIRdvL@cluster0.10ung.mongodb.net/dicefighter?retryWrites=true&w=majority', // replace with your MongoDB connection string
+    mongoUrl: 'mongodb+srv://colinb:ry4oYXRH3sBIRdvL@cluster0.10ung.mongodb.net/lootrpg?retryWrites=true&w=majority', // replace with your MongoDB connection string
   }),
 }));
 
@@ -37,11 +56,12 @@ app.use(bodyParser.json());
 
 // Use routes
 app.use(userRoutes);
-app.use(baseShipRoutes);
-app.use(shipRoutes);
+app.use(playerRoutes);
+app.use(dungeonRoutes);
+app.use(chatRoutes);
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://colinb:ry4oYXRH3sBIRdvL@cluster0.10ung.mongodb.net/dicefighter?retryWrites=true&w=majority').then(() => {
+mongoose.connect('mongodb+srv://colinb:ry4oYXRH3sBIRdvL@cluster0.10ung.mongodb.net/lootrpg?retryWrites=true&w=majority').then(() => {
     console.log('Connected to MongoDB');
 });
 
@@ -49,93 +69,17 @@ app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
 
-// Find all base ships
-
-
-
-/* 
- const baseEngine = new BaseEngine({
-  _id: new mongoose.Types.ObjectId(),
-  name: 'R1 Reactor',
-  description: 'The most affordable reactor of the galaxy.',
-  energyCore: 1,
-  tiers: {
-    1: {
-      evade: 10,
-      escapeThreshold: 10
-    },
-    2: {
-      evade: 14,
-      escapeThreshold: 9
-    },
-    3: {
-      evade: 16,
-      escapeThreshold: 9
-    },
-    4: {
-      evade: 20,
-      escapeThreshold: 8
-    },
-    5: {
-      evade: 25,
-      escapeThreshold: 7
-    }
-  }
-});
-baseEngine.save().then(() => {
-  console.log('ok');
-})
-
-Item.find()
-  .populate({
-    path: 'weaponData',
-    populate: {
-      path: 'prefix suffix',
-    },
-  })
-  .then(items => {
-    console.log(items);
-  })
-  .catch(err => {
-    console.error('Error getting items:', err);
-  });
-
-
-const shipId = "661580bc8ff8aeddfdb07851";
-const newDices = ["66159199cb34922614323e4f", "66159199cb34922614323e4f", "66159199cb34922614323e4f", "66159199cb34922614323e4f", "66159199cb34922614323e4f", "66159199cb34922614323e4f", "66159199cb34922614323e4f", "66159199cb34922614323e4f", "66159199cb34922614323e4f", "66159199cb34922614323e4f"];
-
-Ship.updateOne({ _id: shipId }, { dices: newDices })
-  .then(result => {
-    console.log('Update successful');
-  })
-  .catch(err => {
-    console.error('Error updating document:', err);
-  });
-
-
-
-
-const baseShip = new BaseShip({
-  _id: new mongoose.Types.ObjectId(),
-  name: 'F101 - b1',
-  description: 'The default Great Republic fighter ship.',
-  shipClass: '660dacece546811ba45775c4',
-  inventorySize: 8,
+/*const baseWeapon = new BaseItem({
+  name: 'Wooden Sword',
+  type: 'weapon',
+  subType: 'sword',
   baseStats: {
-    hull: 300,
-    plating: 10,
-    evade: 25,
-    damage: 0,
-    accuracy: 50,
-    shield: 0,
-    shieldRegen: 0
+      attackDamage: { min: 5, max: 10 },
+      // Fill in other stats as needed
   },
-  maxEnergyCore: 12,
-  special: '660dad91f72b4d741baf7c00'
+  level: 1
 });
 
-baseShip.save().then(() => {
-  console.log('ok');
-})*/
-
-
+baseWeapon.save().then(() => {
+  console.log('Base weapon created');
+});*/

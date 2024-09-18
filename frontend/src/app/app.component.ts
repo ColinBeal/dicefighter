@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 })
 
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'lejeu';
+  title = 'lootrpg';
 
   public user: IUser;
   public userSubscription: Subscription;
@@ -25,7 +25,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userSubscription = this.userService.userSubject.subscribe(user => {
-      console.log(user);
       this.user = user;
     });
   }

@@ -36,8 +36,8 @@ import { UserService } from '../../../services/user.service';
             const { username, password } = this.logInForm.value;
             this.apiAuthService.login(username, password).subscribe({
                 next: (v) => {
-                    this.userService.setUser(v.data)
-                    this.router.navigate(['./ship-selection']);
+                    this.userService.setUser(v.data);
+                    this.router.navigate(['./game']);
                 },
                 error: (error) => console.error(error),
                 complete: () => console.info('complete')

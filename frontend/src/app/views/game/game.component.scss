@@ -1,0 +1,20 @@
+.tabs-container {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    gap: 32px;
+    .tab {
+        padding: 8px;
+        border: 2px solid #232323;
+        border-radius: 4px;
+        &.active, &:hover {
+            border: 2px solid #F8F8F8;
+        }
+    }
+}
+.game-container {
+    display: flex;
+    height: calc(100svh - 128px);
+    width: 100%;
+    margin-top: 16px;
+}

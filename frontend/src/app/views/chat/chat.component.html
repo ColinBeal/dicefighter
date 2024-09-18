@@ -1,0 +1,10 @@
+<div class="chat-container">
+    <input type="file" accept="audio/*" #audioInput (change)="onAudioInputChange($event)" style="display:none;">
+    <button (click)="startRecording()">Record Audio</button>
+    <div class="conversation">
+      <div *ngFor="let message of conversation">
+        <p><strong>You:</strong> {{ message.user }}</p>
+        <p><strong>Bot:</strong> {{ message.bot }}</p>
+      </div>
+    </div>
+  </div>

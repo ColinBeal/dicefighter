@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { SigninComponent } from './views/auth/signin/signin.component';
 import { LoginComponent } from './views/auth/login/login.component';
-import { CombatComponent } from './views/combat/combat.component';
-import { ShipSelectionComponent } from './views/ship-selection/ship-selection.component';
+import { GameComponent } from './views/game/game.component';
+import { InventoryComponent } from './views/game/inventory/inventory.component';
+import { DungeonComponent } from './views/game/dungeon/dungeon.component';
+import { ChatComponent } from './views/chat/chat.component';
 
 export const routes: Routes = [
     {
@@ -22,12 +24,27 @@ export const routes: Routes = [
             }
         ]
     },
-    {    
-        path: 'combat',
-        component: CombatComponent,
+    {
+        path: 'game',
+        redirectTo: 'game/inventory',
     },
     {
-        path: 'ship-selection',
-        component: ShipSelectionComponent,
-    }
+        path: 'audio',
+        component: ChatComponent,
+    },
+    {    
+        path: 'game',
+        component: GameComponent,
+        children: [
+            {
+                path: 'inventory',
+                component: InventoryComponent,
+            },
+            {
+                path: 'dungeon',
+                component: DungeonComponent,
+            }            
+        ]
+    },
+    
 ];
